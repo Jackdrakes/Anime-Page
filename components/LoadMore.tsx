@@ -8,7 +8,7 @@ import AnimeCard, { AnimeProp } from "./AnimeCard";
 
 let page = 2;
 
-export type AnimeCard = React.ReactNode;
+// export type AnimeCard = React.ReactNode;
 
 function LoadMore() {
   const { ref, inView } = useInView();
@@ -29,7 +29,10 @@ function LoadMore() {
   return (
     <>
       <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-        {data}
+        {/* {data} */}
+        {data.map((anime, index) => (
+          <AnimeCard key={anime.id} anime={anime} index={index} />
+        ))}
       </section>
       <section className="flex justify-center items-center w-full">
         <div ref={ref}>
