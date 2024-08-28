@@ -12,13 +12,14 @@ let page = 2;
 
 function LoadMore() {
   const { ref, inView } = useInView();
-  const [data, setData] = useState<AnimeProp[]>([]);
+  const [data, setData] = useState<AnimeProp[]>([]); //useState<AnimeProp[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       if (inView) {
-        const res = await fetchanime(1);
-        setData((prevData) => [...prevData, ...res]);
+        const res = await fetchanime(page);
+        setData((prevData) => {
+          return [...prevData, ...res]});
         page++;
       }
     };
@@ -30,8 +31,11 @@ function LoadMore() {
     <>
       <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
         {/* {data} */}
-        {data.map((anime, index) => (
+        {/* {data.map((anime, index) => (
           <AnimeCard key={anime.id} anime={anime} index={index} />
+        ))} */}
+        {data.map((item: AnimeProp, index: number) => (
+          <AnimeCard key={item.id} anime={item} index={index} />
         ))}
       </section>
       <section className="flex justify-center items-center w-full">

@@ -9,7 +9,8 @@ export const fetchanime = async (page: number) => {
 
   const data = await res.json();
 
-  return data.map((item: AnimeProp, index: number) => (
-    <AnimeCard key={item.id} anime={item} index={index} />
-  ));
+  // return data.map((item: AnimeProp, index: number) => (
+  //   <AnimeCard key={item.id} anime={item} index={index} />
+  // ));
+  return data
 };
